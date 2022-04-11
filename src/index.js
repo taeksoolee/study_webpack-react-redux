@@ -9,11 +9,19 @@ import rootReducer from './store';
 import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+const middlewares = [
+  logger
+];
+
+const storeOpt = process.env.MODE === 'prod'
+  ? composeWithDevTools(
+    applyMiddleware(...middlewares)
+  )
+  : applyMiddleware(...middlewares);
+
 const store = createStore(
   rootReducer, 
-  composeWithDevTools(
-    applyMiddleware(logger)
-  )
+  storeOpt
 );
 
 // before 18
