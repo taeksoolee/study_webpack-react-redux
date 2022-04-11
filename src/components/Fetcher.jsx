@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-
 function Inner() {
   return (
     <div>Inner</div>
